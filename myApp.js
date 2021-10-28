@@ -14,6 +14,11 @@ app.get("/", (req,res)=>{
 //serve static assets (css, scripts, images)
 app.use("/public", express.static(__dirname+"/public"));
 
+//serve JSON on a specific route
+app.get("/json", (req, res)=>{
+    res.json({"message":"Hello json"});
+});
+
 
 
 
