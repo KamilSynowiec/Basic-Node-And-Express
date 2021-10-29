@@ -8,6 +8,12 @@ app.get("/", function(req, res){
 });
 */
 
+//root-level request logger 
+app.use(function middleware(req, res, next){
+    var myStr=req.method+" "+req.path+" - "+req.ip;
+    console.log(myStr);
+});
+
 //serve an html file
 app.get("/", (req,res)=>{
     res.sendFile(__dirname+"/views/index.html");
@@ -27,33 +33,6 @@ app.get("/json", (req, res)=>{
     res.json({"message": "HELLO JSON"});
     res.json({"message": "Hello json"});
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
