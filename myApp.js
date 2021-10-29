@@ -11,7 +11,7 @@ app.get("/", function(req, res){
 });
 */
 
-//body-parser to Parse POST Requests
+//body-parser to Parse POST Requests - configuration
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
@@ -61,6 +61,11 @@ app.get("/name", (req, res)=>{
     res.json({name: `${firstName} ${lastName}`});
 });
 
+//body-parser to Parse POST Requests
+app.post("/name", (req, res)=>{
+    var {first: firstName, last: lastName}=req.body;
+    res.json({name: `$firstName $lastName`});
+});
 
 
  module.exports = app;
