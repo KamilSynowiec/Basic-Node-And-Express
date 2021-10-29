@@ -42,11 +42,18 @@ app.get("/now", function(req, res, next){
     res.json({time: req.time});
 });
 
-
 //echo server
 app.get("/:word/echo", (req, res)=>{
     var param1=req.params.word;
     res.json({echo: param1});
 });
+
+//get query parameter input from the client 
+app.get("/name", (req, res)=>{
+    var {first: firstName, last: lastName}=req.query;
+    res.json({name: `${firstName} ${lastName}`});
+});
+
+
 
  module.exports = app;
