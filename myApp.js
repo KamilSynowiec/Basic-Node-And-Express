@@ -13,7 +13,9 @@ app.get("/", function(req, res){
 
 //body-parser to Parse POST Requests - configuration
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
+
+//serve static assets (css, scripts, images)
+app.use("/public", express.static(__dirname+"/public"));
 
 //root-level request logger 
 app.use(function middleware(req, res, next){
@@ -26,9 +28,6 @@ app.get("/", (req,res)=>{
     res.sendFile(__dirname+"/views/index.html");
 });
 
-//serve static assets (css, scripts, images)
-app.use("/public", express.static(__dirname+"/public"));
-
 //serve JSON on a specific route
 app.get("/hi", (req, res)=>{
     res.json({"message":"Hello json"});
@@ -37,7 +36,7 @@ app.get("/hi", (req, res)=>{
 //use .env file
 app.get("/json", (req, res)=>{
     process.env.MESSAGE_STYLE==="uppercase"?
-    res.json({"message": "HELLO JSON"});
+    res.json({"message": "HELLO JSON"}):
     res.json({"message": "Hello json"});
 });
 
