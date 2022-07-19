@@ -1,15 +1,7 @@
 require('dotenv').config();
-
-
 var bodyParser = require('bodyparser')
-
 var express = require('express');
 var app = express();
-/*
-app.get("/", function(req, res){
-    res.send("Hello Express");
-});
-*/
 
 //body-parser to Parse POST Requests - configuration
 app.use(bodyParser.urlencoded({extended: false}));
